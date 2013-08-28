@@ -59,12 +59,12 @@ class InfoBot
   private
 
   def build_path
-    @_build_path ||= Pathname.new(@options['paths']['file_builds'])
+    @_build_path ||= Pathname.new(@options[:file_builds_path])
   end
 
   def calendar
     @_calendar ||= begin
-      calendars = open(@options['calendar']['feed_url']) do |file|
+      calendars = open(@options[:calendar_feed]) do |file|
         Icalendar.parse(file)
       end
 
@@ -74,9 +74,14 @@ class InfoBot
 
   def mediawiki
     @_mediawiki ||= begin
-      gateway = MediaWiki::Gateway.new(@options['mediawiki']['endpoint'])
-      gateway.login @options['mediawiki']['username'],
-                    @options['mediawiki']['password']
+      credentials = [
+        @options[:mediawiki_username],
+        @options[:mediawiki_password]
+      ]
+      raise 'Missing MediaWiki credentials.' unless credentials.all?
+
+      gateway = MediaWiki::Gateway.new(@options[:mediawiki_endpoint])
+      gateway.login *credentials
 
       gateway
     end
@@ -84,10 +89,8 @@ class InfoBot
 
   def next_meeting
     @_next_meeting ||= begin
-      meeting_regex = Regexp.new(@options['calendar']['meeting_regex'])
-
       calendar.events.select { |event|
-        event.summary =~ meeting_regex &&
+        event.summary =~ @options[:meeting_regex] &&
         event.dtstart > DateTime.now
       }.sort { |a, b|
         a.dtstart <=> b.dtstart
@@ -97,7 +100,7 @@ class InfoBot
 
   def static_files
     @_static_files ||= begin
-      paths = Dir.glob(File.join(@options['paths']['file_templates'], '*.erb'))
+      paths = Dir.glob(File.join(@options[:file_templates_path], '*.erb'))
 
       paths.map do |path|
         StaticFile.new(path, build_path)
@@ -107,7 +110,7 @@ class InfoBot
 
   def wiki_pages
     @_wiki_pages ||= begin
-      paths = Dir.glob(File.join(@options['paths']['wiki_pages'], '*.wiki.erb'))
+      paths = Dir.glob(File.join(@options[:wiki_pages_path], '*.wiki.erb'))
 
       paths.map do |path|
         WikiPage.new(path)
