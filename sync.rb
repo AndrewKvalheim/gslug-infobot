@@ -2,8 +2,6 @@
 
 require_relative 'infobot'
 
-require 'pry'
-
 # Initialize
 options = {
   calendar_feed: 'http://www.google.com/calendar/ical/kvalhe.im_59rdgfook15n7enhoaii5ps5i0%40group.calendar.google.com/public/basic.ics',
