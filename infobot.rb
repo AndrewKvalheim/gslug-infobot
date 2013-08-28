@@ -1,5 +1,6 @@
 require 'erb'
 require 'icalendar'
+require 'fileutils'
 require 'media_wiki'
 require 'pathname'
 require 'open-uri'
@@ -17,6 +18,7 @@ class InfoBot
       template = Tilt.new(static_file.path, ERB_OPTIONS)
       output = template.render(self)
 
+      FileUtils.mkdir_p File.dirname(static_file.destination_path)
       IO.write static_file.destination_path, output
     end
   end
