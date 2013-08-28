@@ -9,11 +9,11 @@ to <%= next_meeting_end.strftime('%l:%M %P') %>.
 Please RSVP below!
 
 == Venue Information ==
-<% if next_meeting_location %>
-<%= next_meeting_location -%>
-<% else %>
+<% if next_meeting_location -%>
+<%= next_meeting_location %>
+<% else -%>
 TBA
-<% end %>
+<% end -%>
 
 == Topic ==
 <% if next_meeting_description -%>
