@@ -73,12 +73,16 @@
 		<img id="logo" src="logo.png" alt="Greater Seattle Linux Users Group (GSLUG)">
 		<p id="statement">Founded in 1994, GSLUG is a community of people in the Seattle area who share an interest in Linux and open source software. Everyone is welcome, whether you've never used Linux before or you're a seasoned kernel developer. Come join us the 2nd Saturday of each month to learn and share!</p>
 		<p id="next_meeting">
-      <a href="/wiki/Meeting_2013-09-14">
-        Our next meeting will be held
-        on <%= next_meeting_start.strftime('%A, %B %e') %>
-        from <%= next_meeting_start.strftime('%l:%M %P') %>
-        to <%= next_meeting_end.strftime('%l:%M %P') -%><% if next_meeting_location %> at <%= next_meeting_location -%><% end %>.
-      </a>
+      <% if next_meeting? %>
+        <a href="/wiki/Meeting_<%= next_meeting_start.strftime('%F') %>">
+          Our next meeting will be held
+          on <%= next_meeting_start.strftime('%A, %B %e') %>
+          from <%= next_meeting_start.strftime('%l:%M %P') %>
+          to <%= next_meeting_end.strftime('%l:%M %P') -%><% if next_meeting_location %> at <%= next_meeting_location -%><% end %>.
+        </a>
+      <% else %>
+        The next meeting has not yet been scheduled.
+      <% end %>
     </p>
 		<p>Please join us on IRC if you have any questions:</p>
 		<iframe id="irc" src="http://webchat.freenode.net?channels=gslug&uio=MT1mYWxzZSYzPWZhbHNlJjk9dHJ1ZSYxMD10cnVlJjExPTIxNQ75" width="100%" height="400"></iframe>

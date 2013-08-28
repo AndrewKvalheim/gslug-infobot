@@ -23,6 +23,10 @@ class InfoBot
     end
   end
 
+  def next_meeting?
+    !! next_meeting
+  end
+
   def next_meeting_end
     @_next_meeting_end ||= begin
       raise 'No next meeting found.' unless next_meeting
