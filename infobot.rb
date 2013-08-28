@@ -1,9 +1,9 @@
 require 'erb'
-require 'icalendar'
 require 'fileutils'
 require 'media_wiki'
-require 'pathname'
 require 'open-uri'
+require 'pathname'
+require 'ri_cal'
 require 'tilt'
 
 class InfoBot
@@ -67,7 +67,7 @@ class InfoBot
   def calendar
     @_calendar ||= begin
       calendars = open(@options[:calendar_feed]) do |file|
-        Icalendar.parse(file)
+        RiCal.parse(file)
       end
 
       calendars.first
@@ -91,7 +91,13 @@ class InfoBot
 
   def next_meeting
     @_next_meeting ||= begin
-      calendar.events.select { |event|
+      calendar.events.map { |event|
+        if event.recurs?
+          event.occurrences(overlapping: [Date.today, Date.today.next_year])
+        else
+          event
+        end
+      }.flatten.select { |event|
         event.summary =~ @options[:meeting_regex] &&
         event.dtstart > DateTime.now
       }.sort { |a, b|
