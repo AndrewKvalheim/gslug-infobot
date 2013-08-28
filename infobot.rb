@@ -38,6 +38,16 @@ class InfoBot
     !! next_meeting
   end
 
+  def next_meeting_description
+    @_next_meeting_description ||= begin
+      raise 'No next meeting found.' unless next_meeting
+
+      description = next_meeting.description
+
+      description unless description.empty?
+    end
+  end
+
   def next_meeting_end
     @_next_meeting_end ||= begin
       raise 'No next meeting found.' unless next_meeting
