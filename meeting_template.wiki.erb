@@ -1,0 +1,54 @@
+[[Category:Meetings]]
+= <%= next_meeting_start.strftime('%A %B %e, %Y') %> =
+
+We're currently planning a meeting
+for <%= next_meeting_start.strftime('%A, %B %e') %>
+from <%= next_meeting_start.strftime('%l:%M %P') %>
+to <%= next_meeting_end.strftime('%l:%M %P') %>.
+
+Please RSVP below!
+
+== Venue Information ==
+<% if next_meeting_location %>
+<%= next_meeting_location -%>
+<% else %>
+TBA
+<% end %>
+
+== Topic ==
+TBA
+
+== Schedule ==
+
+=== <%= next_meeting_start.strftime('%l:%M %p') %>: Arrive, get settled, mingling ===
+
+=== <%= (next_meeting_start + 15.minutes).strftime('%l:%M %p') %>: Welcome & announcements ===
+* Where is the bathroom?
+* Anyone hiring or looking for (Linux-related) jobs?
+* PS: If someone wants to coordinate food from outside, please note so in RSVP and add here.
+
+=== <%= (next_meeting_start + 30.minutes).strftime('%l:%M %p') %> Talks ===
+[http://en.wikipedia.org/wiki/Lightning_Talk lightning talks] go about 5 minutes each plus time for questions... therefore we allocate 10 minute slots for each. There will of course be lots of time later in the day for everyone to break into groups and learn more about each topic.
+
+If you're interested in presenting, add yourself below.
+* <%= (next_meeting_start + 30.minutes).strftime('%l:%M %p') %>:
+* <%= (next_meeting_start + 40.minutes).strftime('%l:%M %p') %>:
+* <%= (next_meeting_start + 50.minutes).strftime('%l:%M %p') %>:
+
+=== <%= (next_meeting_start + 1.hour).strftime('%l:%M %p') %> - <%= next_meeting_end.strftime('%l:%M %p') -%>: Workshops, chatting etc. ===
+The rest of the meeting is open format for the following types of activities.
+* new wiki account signup (in person)
+* key signing
+* chatting
+* learn more about what you heard in the lighting talks
+* get support... for instance, you want to install Linux on your computer and need some assistance
+* book/magazine/gear swap - bring your surplus gear, back-issues or books read and swap/trade with others
+** also hardware donations for [[Project_Planning#Free_Geek_Seattle|Free Geek Seattle]]
+
+== Who's Coming? - PLEASE RSVP HERE  ==
+
+Planning to attend? Please add your name below
+
+<!-- Example: # [[William Hale]] -->
+
+== Resources ==

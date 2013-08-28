@@ -1,3 +1,4 @@
+require 'active_support/core_ext'
 require 'erb'
 require 'fileutils'
 require 'media_wiki'
@@ -5,6 +6,7 @@ require 'open-uri'
 require 'pathname'
 require 'ri_cal'
 require 'tilt'
+require 'uri'
 
 class InfoBot
   ERB_OPTIONS = {trim: '-'}
@@ -20,6 +22,15 @@ class InfoBot
 
       FileUtils.mkdir_p File.dirname(static_file.destination_path)
       IO.write static_file.destination_path, output
+    end
+  end
+
+  def generate_next_meeting_page!
+    if next_meeting? && mediawiki.list(next_meeting_page_name).empty?
+      template = Tilt.new(@options[:meeting_template_path], ERB_OPTIONS)
+      output = template.render(self)
+
+      mediawiki.create next_meeting_page_name, output, bot: true
     end
   end
 
@@ -42,6 +53,14 @@ class InfoBot
       location = next_meeting.location
 
       location unless location.empty?
+    end
+  end
+
+  def next_meeting_page_name
+    @_next_meeting_page_name ||= begin
+      raise 'No next meeting found.' unless next_meeting
+
+      "Meeting #{next_meeting_start.strftime('%F')}"
     end
   end
 

@@ -28,6 +28,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activesupport
   mediawiki-gateway (~> 0.5.2)
   ri_cal (~> 0.8.8)
   tilt (~> 1.4.1)

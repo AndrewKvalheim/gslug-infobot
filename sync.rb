@@ -10,6 +10,7 @@ options = {
   mediawiki_endpoint: 'http://gslug.org/api.php',
   mediawiki_password: ENV['MW_PASSWORD'],
   mediawiki_username: ENV['MW_USERNAME'],
+  meeting_template_path: './meeting_template.wiki.erb',
   meeting_regex: /GSLUG/,
   wiki_pages_path: './wiki_pages'
 }
@@ -17,4 +18,5 @@ infobot = InfoBot.new(options)
 
 # Sync
 infobot.build_static_files!
+infobot.generate_next_meeting_page!
 infobot.update_wiki_templates!
