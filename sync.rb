@@ -1,19 +1,13 @@
 #!/usr/bin/env ruby
 
+require 'yaml'
 require_relative 'infobot'
 
 # Initialize
-options = {
-  calendar_feed: 'https://www.google.com/calendar/ical/dksq9gdtuasak0v97g59tnpo60%40group.calendar.google.com/public/basic.ics',
-  file_builds_path: './file_builds',
-  file_templates_path: './file_templates',
-  mediawiki_endpoint: 'http://gslug.org/wiki/api.php',
+options = YAML.load_file('config.yml').merge(
   mediawiki_password: ENV['MW_PASSWORD'],
   mediawiki_username: ENV['MW_USERNAME'],
-  meeting_template_path: './meeting_template.wiki.erb',
-  meeting_regex: /GSLUG/,
-  wiki_pages_path: './wiki_pages'
-}
+)
 infobot = InfoBot.new(options)
 
 # Sync
