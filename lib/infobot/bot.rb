@@ -122,7 +122,7 @@ module InfoBot
 
     # Convert the title of a wiki page into a relative URL
     def wiki_url(title)
-      "/wiki/#{URI.escape(title)}"
+      "/wiki/#{URI.escape(title.tr(' ', '_'))}"
     end
   end
 end
