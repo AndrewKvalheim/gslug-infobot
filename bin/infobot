@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'infobot/cli'
+
+InfoBot::CLI.start

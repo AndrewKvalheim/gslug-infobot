@@ -3,8 +3,4 @@
 This template is automatically updated by [[User:InfoBot|InfoBot]].
 
 == Content ==
-</noinclude><% if next_meeting? -%>
-<%= next_meeting_page_name %>
-<% else -%>
-Category:Meetings
-<% end %>
+</noinclude><% if meeting = calendar.next_meeting -%><%= meeting.location %><% else -%>TBA<% end %>

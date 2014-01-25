@@ -1,2 +1,5 @@
+# Local file builds
+/build
+
+# Private information
 credentials.env
-file_builds

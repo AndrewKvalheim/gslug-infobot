@@ -1,0 +1,6 @@
+<noinclude>
+== About ==
+This template is automatically updated by [[User:InfoBot|InfoBot]].
+
+== Content ==
+</noinclude><% if meeting = calendar.next_meeting -%><%= meeting.start.strftime('%A, %B %e') %> from <%= meeting.start.strftime('%l:%M %P') %> to <%= meeting.end.strftime('%l:%M %P') %><% else -%>TBA<% end %>

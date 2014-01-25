@@ -2,31 +2,37 @@
 # MediaWiki integration
 #
 
-# URL of the MediaWiki API endpoint
-:mediawiki_endpoint: http://gslug.org/wiki/api.php
+:mediawiki:
+
+  # URL of the MediaWiki API endpoint
+  :endpoint: http://gslug.org/wiki/api.php
 
 #
-# Data sources
+# Calendar
 #
 
-# URL returning an iCalendar feed
-:calendar_feed: https://www.google.com/calendar/ical/dksq9gdtuasak0v97g59tnpo60%40group.calendar.google.com/public/basic.ics
+:calendar:
 
-# Regular expression to be matched against calendar events to identify meetings
-:meeting_regex: !ruby/regexp /GSLUG/
+  # URL of iCalendar feed
+  :feed_url: https://www.google.com/calendar/ical/dksq9gdtuasak0v97g59tnpo60%40group.calendar.google.com/public/basic.ics
+
+  # Regular expression to be matched against calendar events to identify meetings
+  :meeting_regex: !ruby/regexp /GSLUG/
 
 #
 # Templates
 #
 
-# Path of the template for meeting pages
-:meeting_template_path: ./meeting_template.wiki.erb
+:templates:
 
-# Path of the directory containing wiki page templates
-:wiki_pages_path: ./wiki_pages
+  # Template for meeting pages
+  :meeting: templates/meeting.wiki.erb
 
-# Path of the directory containing file templates
-:file_templates_path: ./file_templates
+  # Directory of file templates to build automatically
+  :local_files: templates/auto_local-files
 
-# Path of the directory in which to write built files
-:file_builds_path: ./file_builds
+  # Directory of wiki page templates to publish automatically
+  :wiki_pages: templates/auto_wiki-pages
+
+# Directory in which to build local files
+:build_path: build
