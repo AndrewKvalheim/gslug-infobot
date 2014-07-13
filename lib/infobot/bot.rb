@@ -57,12 +57,12 @@ module InfoBot
 
     # Create a new page on the wiki
     def create(title, body)
-      mediawiki.create title, body, bot: true
+      mediawiki.create title, body
     end
 
     # Overwrite an existing page on the wiki
     def edit(title, body)
-      mediawiki.edit title, body, bot: true
+      mediawiki.edit title, body
     end
 
     # List of local files to generate
@@ -85,7 +85,8 @@ module InfoBot
       ]
       raise 'Missing MediaWiki credentials.' unless credentials.all?
 
-      gateway = MediaWiki::Gateway.new(@config[:mediawiki][:endpoint])
+      endpoint = @config[:mediawiki][:endpoint]
+      gateway = MediaWiki::Gateway.new(endpoint, bot: true)
       gateway.login *credentials
 
       gateway
