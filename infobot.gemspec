@@ -21,7 +21,7 @@ Gem::Specification.new do |gem|
   # Dependencies
   gem.add_runtime_dependency 'activesupport', '~> 4.0'
   gem.add_runtime_dependency 'erubis'
-  gem.add_runtime_dependency 'mediawiki-gateway', '~> 0.5.2'
+  gem.add_runtime_dependency 'mediawiki-gateway', '~> 0.6'
   gem.add_runtime_dependency 'memoizer', '~> 1.0'
   gem.add_runtime_dependency 'pry', '~> 0.9'
   gem.add_runtime_dependency 'ri_cal', '~> 0.8'
