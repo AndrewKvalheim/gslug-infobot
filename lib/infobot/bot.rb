@@ -33,11 +33,11 @@ module InfoBot
 
     # Generate and publish a wiki page for the next meeting, if necessary
     def generate_meeting_page
-      if meeting = calendar.next_meeting
-        content = render(@config[:templates][:meeting])
+      return unless calendar.next_meeting
 
-        soft_create meeting.wiki_page_title, content
-      end
+      content = render(@config[:templates][:meeting])
+
+      soft_create calendar.next_meeting.wiki_page_title, content
     end
 
     # Generate and publish wiki pages from templates
@@ -79,15 +79,13 @@ module InfoBot
 
     # MediaWiki API instance
     def mediawiki
-      credentials = [
-        @config[:mediawiki][:username],
-        @config[:mediawiki][:password]
-      ]
-      raise 'Missing MediaWiki credentials.' unless credentials.all?
+      credentials = [@config[:mediawiki][:username],
+                     @config[:mediawiki][:password]]
+      fail 'Missing MediaWiki credentials.' unless credentials.all?
 
       endpoint = @config[:mediawiki][:endpoint]
       gateway = MediaWiki::Gateway.new(endpoint, bot: true)
-      gateway.login *credentials
+      gateway.login(*credentials)
 
       gateway
     end
@@ -95,7 +93,7 @@ module InfoBot
 
     # Check whether the wiki page exists
     def page_exists?(title)
-      ! mediawiki.list(title).empty?
+      !mediawiki.list(title).empty?
     end
     memoize :page_exists?
 

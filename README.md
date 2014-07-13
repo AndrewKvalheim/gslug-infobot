@@ -1,6 +1,6 @@
 # InfoBot
 
-[InfoBot][] is a [MediaWiki bot][bot] for updating the [GSLUG][] wiki and
+[InfoBot] is a [MediaWiki bot][bot] for updating the [GSLUG] wiki and
 website.
 
 ## Installation

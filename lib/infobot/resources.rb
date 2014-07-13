@@ -2,7 +2,7 @@ module InfoBot
   module Resources
     # Generic template to be rendered
     class Resource
-      def initialize path
+      def initialize(path)
         @pathname ||= Pathname.new(path)
       end
 
@@ -13,7 +13,7 @@ module InfoBot
 
     # Local file to generate from a template
     class LocalFile < Resource
-      def initialize path, build_path
+      def initialize(path, build_path)
         @build_path ||= build_path
 
         super path

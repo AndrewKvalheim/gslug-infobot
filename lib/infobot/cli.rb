@@ -3,10 +3,10 @@ require 'thor'
 module InfoBot
   # Main interface to InfoBot
   class CLI < Thor
-    class_option :config, banner: 'PATH',
+    class_option :config, banner:  'PATH',
                           default: 'config.yml',
-                          desc: 'Configuration file',
-                          type: :string
+                          desc:    'Configuration file',
+                          type:    :string
 
     desc 'console', 'Open a console in the context of InfoBot'
     def console

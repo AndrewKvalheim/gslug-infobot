@@ -23,12 +23,11 @@ module InfoBot
 
     # Next meeting, if one exists
     def next_meeting
-      event = events.detect do |event|
-        event.dtstart > DateTime.now &&
-        event.summary =~ @config[:meeting_regex]
+      meeting_event = events.find do |event|
+        event.dtstart > DateTime.now && event.summary =~ @config[:meeting_regex]
       end
 
-      Meeting.new(event) if event
+      Meeting.new(meeting_event) if meeting_event
     end
     memoize :next_meeting
 

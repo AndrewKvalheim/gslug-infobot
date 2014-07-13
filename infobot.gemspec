@@ -1,6 +1,6 @@
 # Generated data
 git_files       = `git ls-files -z`.split("\0")
-git_executables = git_files.grep(%r{^bin/}).map{ |path| File.basename(path) }
+git_executables = git_files.grep(/^bin\//).map { |path| File.basename(path) }
 
 Gem::Specification.new do |gem|
   # Metadata
@@ -10,7 +10,8 @@ Gem::Specification.new do |gem|
   gem.required_ruby_version = '~> 2.0'
   gem.license               = 'GPL-3.0'
   gem.authors               = ['Andrew Kvalheim']
-  gem.summary               = 'A MediaWiki bot for updating the GSLUG wiki and website'
+  gem.summary               = 'A MediaWiki bot for updating the GSLUG wiki' \
+                              ' and website'
   gem.homepage              = 'http://gslug.org/wiki/User:InfoBot'
 
   # Contents
@@ -19,14 +20,14 @@ Gem::Specification.new do |gem|
   gem.require_paths = ['lib']
 
   # Dependencies
-  gem.add_runtime_dependency 'activesupport', '~> 4.0'
+  gem.add_runtime_dependency 'activesupport',     '~> 4.0'
   gem.add_runtime_dependency 'erubis'
   gem.add_runtime_dependency 'mediawiki-gateway', '~> 0.6'
-  gem.add_runtime_dependency 'memoizer', '~> 1.0'
-  gem.add_runtime_dependency 'pry', '~> 0.9'
-  gem.add_runtime_dependency 'ri_cal', '~> 0.8'
-  gem.add_runtime_dependency 'thor', '~> 0.18'
-  gem.add_runtime_dependency 'tilt', '~> 2.0'
+  gem.add_runtime_dependency 'memoizer',          '~> 1.0'
+  gem.add_runtime_dependency 'pry',               '~> 0.9'
+  gem.add_runtime_dependency 'ri_cal',            '~> 0.8'
+  gem.add_runtime_dependency 'thor',              '~> 0.18'
+  gem.add_runtime_dependency 'tilt',              '~> 2.0'
 
   # Development environment
   gem.add_development_dependency 'cane'
