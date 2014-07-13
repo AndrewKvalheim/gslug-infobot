@@ -5,7 +5,7 @@ git_executables = git_files.grep(%r{^bin/}).map{ |path| File.basename(path) }
 Gem::Specification.new do |gem|
   # Metadata
   gem.name                  = 'infobot'
-  gem.version               = '0.0.1'
+  gem.version               = '0.1.0'
   gem.platform              = Gem::Platform::RUBY
   gem.required_ruby_version = '~> 2.0'
   gem.license               = 'GPL-3.0'

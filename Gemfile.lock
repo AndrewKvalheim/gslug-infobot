@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    infobot (0.0.1)
+    infobot (0.1.0)
       activesupport (~> 4.0)
       erubis
       mediawiki-gateway (~> 0.5.2)
