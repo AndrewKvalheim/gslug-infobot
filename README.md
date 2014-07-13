@@ -10,7 +10,7 @@ Clone the repository and run `bundle install`. Set the environment variables
 
 ## Usage
 
-Run `infobot` for a list of available commands:
+Run `bundle exec infobot` for a list of available commands:
 
     $ infobot
     Commands:
