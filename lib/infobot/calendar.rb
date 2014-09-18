@@ -17,7 +17,7 @@ module InfoBot
         RiCal.parse(feed)
       end
 
-      as_occurrences(calendars.first.events).sort_by { |event| event.dtstart }
+      as_occurrences(calendars.first.events).sort_by(&:dtstart)
     end
     memoize :events
 
