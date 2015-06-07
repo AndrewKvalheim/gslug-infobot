@@ -8,24 +8,24 @@ for <%= meeting.start.strftime('%A, %B %e') %>
 from <%= meeting.start.strftime('%l:%M %P') %>
 to <%= meeting.end.strftime('%l:%M %P') %>.
 
-Please RSVP below!
-
 == Venue Information ==
-<%= meeting.location || 'TBA' %>
+[[<%= meeting.location || 'TBA' %>]]
 
 == Topic ==
 <%= meeting.topic || 'TBA' %>
 
 == Schedule ==
 
-=== <%= meeting.start.strftime('%l:%M %p') %>: Arrive, get settled, mingling ===
+=== <%= meeting.start.strftime('%l:%M %p') %>: Arrive, get settled ===
 
-=== <%= (meeting.start + 15.minutes).strftime('%l:%M %p') %>: Welcome & announcements ===
+=== <%= (meeting.start + 15.minutes).strftime('%l:%M %p') %>: Announcements ===
 * Where is the bathroom?
 * Anyone hiring or looking for (Linux-related) jobs?
+* New/upcoming distribution releases?
+* Other news
 * PS: If someone wants to coordinate food from outside, please note so in RSVP and add here.
 
-=== <%= (meeting.start + 30.minutes).strftime('%l:%M %p') %> Talks ===
+=== <%= (meeting.start + 30.minutes).strftime('%l:%M %p') %>: Lightning Talks ===
 [http://en.wikipedia.org/wiki/Lightning_Talk lightning talks] go about 5 minutes each plus time for questions... therefore we allocate 10 minute slots for each. There will of course be lots of time later in the day for everyone to break into groups and learn more about each topic.
 
 If you're interested in presenting, add yourself below.
@@ -33,20 +33,28 @@ If you're interested in presenting, add yourself below.
 * <%= (meeting.start + 40.minutes).strftime('%l:%M %p') %>:
 * <%= (meeting.start + 50.minutes).strftime('%l:%M %p') %>:
 
-=== <%= (meeting.start + 1.hour).strftime('%l:%M %p') %> - <%= meeting.end.strftime('%l:%M %p') -%>: Workshops, chatting etc. ===
+=== <%= (meeting.start + 1.hour).strftime('%l:%M %p') %>: Round-table Discussion ===
+
+=== <%= (meeting.start + 1.hour + 30.minutes).strftime('%l:%M %p') %>: Birds of a Feather ===
+[https://en.wikipedia.org/wiki/Birds_of_a_feather_%28computing%29 Break into special interest groups.]
+
+=== <%= (meeting.start + 2.hour).strftime('%l:%M %p') %>: Mingling, keysigning, support, etc. ===
 The rest of the meeting is open format for the following types of activities.
-* new wiki account signup (in person)
-* key signing
-* chatting
-* learn more about what you heard in the lighting talks
-* get support... for instance, you want to install Linux on your computer and need some assistance
-* book/magazine/gear swap - bring your surplus gear, back-issues or books read and swap/trade with others
-** also hardware donations for [[Project_Planning#Free_Geek_Seattle|Free Geek Seattle]]
+* chatting / mingling
+* [https://wiki.debian.org/Keysigning keysigning] of [https://help.riseup.net/en/security/message-security/openpgp/best-practices gpg keys]
+* getting support
+* new wiki account signup
+* book/magazine/gear swap
+* learn more about the talks
+* hardware donations for [[Project_Planning#Free_Geek_Seattle|Free Geek Seattle]]
+
+=== <%= (meeting.start + 2.hour + 50.minutes).strftime('%l:%M %p') %> - <%= meeting.end.strftime('%l:%M %p') -%>: Cleanup ===
 
 == Who's Coming? - PLEASE RSVP HERE  ==
 
 Planning to attend? Please add your name below
 
-<!-- Example: # [[William Hale]] -->
+<!-- Example: # [[Person One]] -->
+<!--          # Person Two -->
 
 == Resources ==
