@@ -18,12 +18,24 @@ to <%= meeting.end.strftime('%l:%M %P') %>.
 
 === <%= meeting.start.strftime('%l:%M %p') %>: Arrive, get settled ===
 
-=== <%= (meeting.start + 15.minutes).strftime('%l:%M %p') %>: Announcements ===
+=== <%= (meeting.start + 10.minutes).strftime('%l:%M %p') %>: Announcements ===
 * Where is the bathroom?
-* Anyone hiring or looking for (Linux-related) jobs?
 * New/upcoming distribution releases?
+* Reminder about security news since the last meeting
 * Other news
 * PS: If someone wants to coordinate food from outside, please note so in RSVP and add here.
+
+=== <%= (meeting.start + 15.minutes).strftime('%l:%M %p') %>: Introductions ===
+
+(Each bullet point is supposed to be one quick round)
+
+* Name & IRC Nickname
+* How can GSLUG help you?
+* How can you help GSLUG?
+* Are there any projects that you want to show and tell?
+* What are you interested in laerning more about?
+* Where would you like to see future GSLUG meetings?
+
 
 === <%= (meeting.start + 30.minutes).strftime('%l:%M %p') %>: Lightning Talks ===
 [//en.wikipedia.org/wiki/Lightning_Talk lightning talks] go about 5 minutes each plus time for questions... therefore we allocate 10 minute slots for each. There will of course be lots of time later in the day for everyone to break into groups and learn more about each topic.
