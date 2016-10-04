@@ -5,7 +5,7 @@
 :mediawiki:
 
   # URL of the MediaWiki API endpoint
-  :endpoint: http://gslug.org/wiki/api.php
+  :endpoint: https://gslug.org/wiki/api.php
 
 #
 # Calendar
