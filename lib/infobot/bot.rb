@@ -36,9 +36,10 @@ module InfoBot
     def generate_meeting_page
       return unless calendar.next_meeting
 
+      title = calendar.next_meeting.wiki_page_title
       content = render(@config[:templates][:meeting])
 
-      soft_create calendar.next_meeting.wiki_page_title, content
+      unlock title if soft_create(title, content)
     end
 
     # Generate and publish wiki pages from templates
@@ -49,6 +50,11 @@ module InfoBot
     end
 
     private
+
+    # Append content to an existing page
+    def append(title, content)
+      edit title, [get(title), content].join("\n")
+    end
 
     # Calendar interface instance
     def calendar
@@ -64,6 +70,11 @@ module InfoBot
     # Overwrite an existing page on the wiki
     def edit(title, body)
       mediawiki.edit title, body
+    end
+
+    # Get the content of a page
+    def get(title)
+      mediawiki.get(title)
     end
 
     # List of local files to generate
@@ -107,6 +118,11 @@ module InfoBot
     # Create a new page on the wiki, unless it already exists
     def soft_create(title, body)
       create title, body unless page_exists?(title)
+    end
+
+    # Add a title to the list of unlocked pages
+    def unlock(title)
+      append 'MediaWiki:Unlockedpages', "* [[#{title}]]"
     end
 
     # List of wiki pages to generate
